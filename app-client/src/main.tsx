@@ -5,13 +5,14 @@ import App from "./App.tsx";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 // import { GoalsComponent } from "./components/Goals/Goals.tsx";
 // import { goals } from "./goal.ts";
-import { Provider } from "./components/ui/provider.tsx";
+// import { Provider } from "./components/ui/provider.tsx";
 // import { CheckpointsComponent } from "./components/Checkpoints/Checkpoints.tsx";
 import { GoalPage } from "./components/GoalPage/GoalPage.tsx";
+import { ChakraProvider } from "@chakra-ui/react";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Provider forcedTheme="light">
+    <ChakraProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
@@ -20,6 +21,6 @@ createRoot(document.getElementById("root")!).render(
           </Route>
         </Routes>
       </BrowserRouter>
-    </Provider>
+    </ChakraProvider>
   </StrictMode>
 );

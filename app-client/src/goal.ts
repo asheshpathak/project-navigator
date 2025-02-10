@@ -1,20 +1,20 @@
 export const goals = [
   {
-    id: "goal_1",
+    _id: "goal_1",
     title: "Goal 1",
     description: "A sample Goal",
     createdAt: "",
     updatedAt: "",
     checkpoints: [
       {
-        id: "checkpoint_1",
+        _id: "checkpoint_1",
         title: "Checkpoint 1",
         description: "A goal to achieve",
         createdAt: "",
         updatedAt: "",
         tasks: [
           {
-            id: "task_1",
+            _id: "task_1",
             title: "Task 1",
             completed: true,
             description: "A sample task",
@@ -22,7 +22,7 @@ export const goals = [
             updatedAt: "",
           },
           {
-            id: "task_2",
+            _id: "task_2",
             title: "Task 2",
             completed: false,
             description: "A sample task",
@@ -30,7 +30,7 @@ export const goals = [
             updatedAt: "",
           },
           {
-            id: "task_3",
+            _id: "task_3",
             title: "Task 3",
             completed: false,
             description: "A sample task",
@@ -38,7 +38,7 @@ export const goals = [
             updatedAt: "",
           },
           {
-            id: "task_4",
+            _id: "task_4",
             title: "Task 4",
             completed: false,
             description: "A sample task",
@@ -48,14 +48,14 @@ export const goals = [
         ],
       },
       {
-        id: "checkpoint_2",
+        _id: "checkpoint_2",
         title: "Checkpoint 2",
         description: "A goal to achieve",
         createdAt: "",
         updatedAt: "",
         tasks: [
           {
-            id: "task_1",
+            _id: "task_1",
             title: "Task 1",
             description: "A sample task",
             completed: false,
@@ -63,7 +63,7 @@ export const goals = [
             updatedAt: "",
           },
           {
-            id: "task_2",
+            _id: "task_2",
             title: "Task 2",
             description: "A sample task",
             completed: false,
@@ -71,7 +71,7 @@ export const goals = [
             updatedAt: "",
           },
           {
-            id: "task_3",
+            _id: "task_3",
             title: "Task 3",
             description: "A sample task",
             completed: false,
@@ -79,7 +79,7 @@ export const goals = [
             updatedAt: "",
           },
           {
-            id: "task_4",
+            _id: "task_4",
             title: "Task 4",
             description: "A sample task",
             completed: false,
@@ -91,21 +91,21 @@ export const goals = [
     ],
   },
   {
-    id: "goal_2",
+    _id: "goal_2",
     title: "Goal 2",
     description: "Another Goal to achieve",
     createdAt: "",
     updatedAt: "",
     checkpoints: [
       {
-        id: "checkpoint_1",
+        _id: "checkpoint_1",
         title: "Checkpoint 1",
         description: "A sample checkpoint",
         createdAt: "",
         updatedAt: "",
         tasks: [
           {
-            id: "task_1",
+            _id: "task_1",
             title: "Task 1",
             description: "A sample task",
             completed: false,
@@ -113,7 +113,7 @@ export const goals = [
             updatedAt: "",
           },
           {
-            id: "task_2",
+            _id: "task_2",
             title: "Task 2",
             description: "A sample task",
             completed: false,
@@ -121,7 +121,7 @@ export const goals = [
             updatedAt: "",
           },
           {
-            id: "task_3",
+            _id: "task_3",
             title: "Task 3",
             description: "A sample task",
             completed: false,
@@ -129,7 +129,7 @@ export const goals = [
             updatedAt: "",
           },
           {
-            id: "task_4",
+            _id: "task_4",
             title: "Task 4",
             description: "A sample task",
             completed: false,

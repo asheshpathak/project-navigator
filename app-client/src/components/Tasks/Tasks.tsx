@@ -1,9 +1,9 @@
 import { HStack, Box, Text } from "@chakra-ui/react";
-import { Checkbox } from "../ui/checkbox";
+import { Checkbox } from "@chakra-ui/react";
 import React from "react";
-import { Task } from "../GoalsList/GoalsListComponent";
+import { Task } from "../../types";
 interface Props {
-  tasks: Task[];
+  tasks?: Task[];
 }
 
 export const TasksComponent: React.FC<Props> = ({ tasks }) => {
@@ -11,7 +11,7 @@ export const TasksComponent: React.FC<Props> = ({ tasks }) => {
     <>
       <Box>
         <Text>Tasks</Text>
-        {tasks.map((task) => {
+        {tasks?.map((task) => {
           return (
             <>
               <Box border="sm" p={2} m={2}>

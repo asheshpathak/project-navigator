@@ -1,79 +1,130 @@
 import React from "react";
-// import { CheckpointsComponent } from "../Checkpoints/Checkpoints";
-import { Card } from "@chakra-ui/react";
-import { Image } from "@chakra-ui/react";
-import { Button } from "@chakra-ui/react";
-import { Text } from "@chakra-ui/react";
+import {
+  Card,
+  CardBody,
+  CardFooter,
+  Heading,
+  Modal,
+  ModalBody,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalCloseButton,
+  ModalFooter,
+  FormControl,
+  FormLabel,
+  Input,
+  StatNumber,
+  Stat,
+  CircularProgress,
+  Image,
+  Button,
+  Text,
+  HStack,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { HStack } from "@chakra-ui/react";
-
-export interface Task {
-  id: string;
-  title: string;
-  description: string;
-  completed: boolean;
-  createdAt: string;
-  updatedAt: string;
-}
-
-export interface Checkpoint {
-  id: string;
-  title: string;
-  description: string;
-  createdAt: string;
-  updatedAt: string;
-  tasks: Task[];
-}
-
-export interface Goal {
-  id: string;
-  title: string;
-  description: string;
-  createdAt: string;
-  updatedAt: string;
-  checkpoints: Checkpoint[];
-}
-
+import { Goal } from "../../types";
+import { useDisclosure } from "@chakra-ui/react";
+import axios from "axios";
 interface Props {
-  goals: Goal[];
+  goals?: Goal[];
 }
+const VerticallyCenter = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const createGoal = () => {
+    const goalObject = {
+      title: "A sample goal",
+      description: "A sample descrition of the goal",
+    };
+    axios
+      .post("http://localhost:7000/goals/create", goalObject)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-export const GoalsListComponent: React.FC<Props> = ({ goals }) => {
   return (
     <>
+      <Button onClick={onOpen}>Trigger modal</Button>
+
+      <Modal onClose={onClose} isOpen={isOpen} isCentered>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Modal Title</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>
+            <FormControl>
+              <FormLabel>Name of the Goal</FormLabel>
+              <Input type="email" />
+              {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
+            </FormControl>
+            <FormControl>
+              <FormLabel>Description</FormLabel>
+              <Input type="email" />
+              {/* <FormHelperText>We'll never share your email.</FormHelperText> */}
+            </FormControl>
+          </ModalBody>
+          <ModalFooter>
+            <Button onClick={createGoal} variant="solid">
+              Create Goal
+            </Button>
+            <Button onClick={onClose} variant="outline">
+              Close
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+    </>
+  );
+};
+export const GoalsListComponent: React.FC<Props> = ({ goals }) => {
+  console.log(goals);
+  return (
+    <>
+      <VerticallyCenter />
       <HStack>
-        {goals.map((goal) => {
+        {goals?.map((goal) => {
           return (
             <>
-              <Card.Root maxW="sm" overflow="hidden">
+              <Card w="sm">
                 <Image
-                  maxH="60"
-                  maxW="100"
+                  w="100%"
+                  h="400px"
                   src="https://images.unsplash.com/photo-1506784781895-38847b5e50e7?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                   alt="Green double couch with wooden legs"
                 />
-                <Card.Body gap="2">
-                  <Card.Title>{goal.title}</Card.Title>
-                  <Card.Description>{goal.description}</Card.Description>
-                  <Text
+                <CardBody gap="2">
+                  <Heading size="md">{goal.title}</Heading>
+                  <Text>{goal.description}</Text>
+                  {/* <Text
                     textStyle="2xl"
                     fontWeight="medium"
                     letterSpacing="tight"
                     mt="2"
                   >
                     45%
-                  </Text>
-                </Card.Body>
-                <Card.Footer gap="2">
-                  <Button variant="solid">
-                    <Link to={`/goals/${goal.id}`}>Go to the Goal</Link>
-                  </Button>
-                  <Button variant="ghost">
-                    <Link to="">Edit Goal</Link>
-                  </Button>
-                </Card.Footer>
-              </Card.Root>
-              {/* <CheckpointsComponent checkpoints={goal.checkpoints} /> */}
+                  </Text> */}
+                  <HStack>
+                    <CircularProgress value={80} />
+                    <Stat>
+                      <StatNumber>45%</StatNumber>
+                    </Stat>
+                  </HStack>
+                </CardBody>
+                <CardFooter gap="2">
+                  <HStack>
+                    <Button variant="solid">
+                      <Link to={`/goals/${goal._id}`}>Go to the Goal</Link>
+                    </Button>
+                    <Button variant="outline">
+                      <Link to="">Edit Goal</Link>
+                    </Button>
+                  </HStack>
+                </CardFooter>
+              </Card>
             </>
           );
         })}
