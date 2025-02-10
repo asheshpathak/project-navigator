@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { goals } from "../../goal";
 import { Goal } from "../GoalsList/GoalsListComponent";
 import { TasksComponent } from "../Tasks/Tasks";
-import { Box, HStack, VStack } from "@chakra-ui/react";
+import { Box, HStack, VStack, Heading } from "@chakra-ui/react";
 
 export const GoalPage = () => {
   const params = useParams();
@@ -11,7 +11,9 @@ export const GoalPage = () => {
   console.log(goal);
   return (
     <>
-      <h1>{goal?.title}</h1>
+      <Heading size="3xl" letterSpacing="tight">
+        {goal?.title}
+      </Heading>
       <HStack>
         {goal?.checkpoints?.map((checkpoint) => {
           return (

@@ -11,6 +11,7 @@ export interface Task {
   id: string;
   title: string;
   description: string;
+  completed: boolean;
   createdAt: string;
   updatedAt: string;
 }
@@ -40,7 +41,6 @@ interface Props {
 export const GoalsListComponent: React.FC<Props> = ({ goals }) => {
   return (
     <>
-      <h1>Goals</h1>
       <HStack>
         {goals.map((goal) => {
           return (

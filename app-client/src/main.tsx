@@ -11,7 +11,7 @@ import { GoalPage } from "./components/GoalPage/GoalPage.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Provider>
+    <Provider forcedTheme="light">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />
